@@ -27,6 +27,23 @@ app.get("/api/items", (req, res) => {
     res.json(items);
 });
 
+// Route with a query string
+app.get("/api/items/search", (req, res) => {
+    const searchName = req.query.name;
+
+    const items = [
+        { id: 1, name: "Laptop" },
+        { id: 2, name: "Mouse" },
+        { id: 3, name: "Keyboard" },
+    ];
+
+    const results = items.filter((i) =>
+        i.name.toLowerCase().includes(searchName.toLowerCase()),
+    );
+
+    res.json(results);
+});
+
 // 7 - Start the server on port 3000
 const PORT = 3000;
 
