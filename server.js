@@ -44,6 +44,21 @@ app.get("/api/items/search", (req, res) => {
     res.json(results);
 });
 
+// Route with a URL parameter
+app.get("/api/items/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+
+    const items = [
+        { id: 1, name: "Laptop" },
+        { id: 2, name: "Mouse" },
+        { id: 3, name: "Keyboard" },
+    ];
+
+    const item = items.find((i) => i.id === id);
+
+    res.json(item);
+});
+
 // 7 - Start the server on port 3000
 const PORT = 3000;
 
